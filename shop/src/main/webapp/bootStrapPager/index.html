@@ -1,0 +1,94 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>分页Demo</title>
+<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+<script src="js/extendPagination.js"></script>
+</head>
+
+<body>
+<div id="callBackPagination" class="piece">
+  <h2> <small>扩展分页带回调函数(表格带分页)</small> </h2>
+  <form role="form" action="#">
+    <div class="form-group">
+      <label for="totalCount">总数</label>
+      <input type="text" class="form-control" id="totalCount1" placeholder="请输入总数">
+      <label for="showCount">展示选项数</label>
+      <input type="text" class="form-control" id="showCount1" placeholder="请输入分页栏展示数(默认10)">
+      <label for="limit">每页显示数据量</label>
+      <input type="text" class="form-control" id="limit" placeholder="请输入每页显示数据量(默认10)">
+    </div>
+    <button type="submit" onclick="callBackPagination();" class="btn btn-default">提交</button>
+  </form>
+  <div id="mainContent"></div>
+  <div id="callBackPager"></div>
+</div>
+</body>
+<script type="text/javascript">
+
+    function callBackPagination() {
+
+        var totalCount = Number($('#totalCount1').val()) || 252, showCount = $('#showCount1').val(),
+
+                limit = Number($('#limit').val()) || 10;
+
+        createTable(1, limit, totalCount);
+
+        $('#callBackPager').extendPagination({
+
+            totalCount: totalCount,
+
+            showCount: showCount,
+
+            limit: limit,
+
+            callback: function (curr, limit, totalCount) {
+
+                createTable(curr, limit, totalCount);
+
+            }
+
+        });
+
+    }
+
+    function createTable(currPage, limit, total) {
+
+        var html = [], showNum = limit;
+
+        if (total - (currPage * limit) < 0) showNum = total - ((currPage - 1) * limit);
+
+        html.push(' <table class="table table-hover piece" style="margin-left: 0;">');
+
+        html.push(' <caption>悬停表格(' + total + ')</caption>');
+
+        html.push(' <thead><tr><th>名称</th><th>城市</th><th>密码</th></tr></thead><tbody>');
+
+        for (var i = 1; i <= showNum; i++) {
+
+            html.push('<tr><td>name' + currPage + '页_' + i + '</td>');
+
+            html.push('<td>city' + currPage + '页_' + i + '</td>');
+
+            html.push('<td>pwd' + currPage + '页_' + i + '</td>');
+
+            html.push('</tr>');
+
+        }
+
+        html.push('</tbody></table>');
+
+        var mainObj = $('#mainContent');
+
+        mainObj.empty();
+
+        mainObj.html(html.join(''));
+
+    }
+
+</script>
+</html>

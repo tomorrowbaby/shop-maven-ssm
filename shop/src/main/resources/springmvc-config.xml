@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+	<!-- 定义组件扫描器，指定需要扫描的包 -->
+	<context:component-scan base-package="com.ssm.core.controller" />
+  <context:component-scan base-package="com.ssm.core.service"/>
+  <context:component-scan base-package="com.ssm.core.dao"/>
+
+	<!-- 配置注解驱动 -->
+	<mvc:annotation-driven />	
+	
+	<!--配置静态资源的访问映射，此配置中的文件，将不被前端控制器拦截 -->
+		<mvc:resources location="/js/" mapping="/js/**" />
+    <mvc:resources location="/css/" mapping="/css/**" />
+    <mvc:resources location="/fonts/" mapping="/fonts/**" />
+    <mvc:resources location="/img/" mapping="/img/**" />	
+    <mvc:resources location="/pages/" mapping="/pages/**" />
+		<mvc:resources location="/images/" mapping="/images/**" />
+		<mvc:resources location="/partials/" mapping="/partials/**" />
+		<mvc:resources location="/PSD/" mapping="/PSD/**" />
+		<mvc:resources location="/scss/" mapping="/scss/**" />
+		<mvc:resources location="/vendors/" mapping="/vendors/**"/>
+		<mvc:resources location="/assets/"  mapping="/assets/**" />
+		<mvc:resources location="/back/" mapping="/back/**" />
+		<mvc:resources location="/front/" mapping="/front/**" />
+		<mvc:resources location="/bootStrapPager/" mapping="/bootStrapPager/**" />
+
+	<!-- <mvc:default-servlet-handler /> -->
+
+	<!-- 配置视图解析器 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+		<bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--上传文件的最大大小-->
+        <property name="maxUploadSize" value="17367648787"></property>
+       <!-- 上传文件的编码 --> 
+       <property name="defaultEncoding" value="UTF-8"></property> 
+   </bean>
+
+	<!-- mapper代理，基于mapperbeanfactory -->
+	<!-- <bean>标签配置注解方式的处理器映射器和处理器适配器必须配对使用 -->
+	<!-- 使用<bean>标签配置注解方式的处理器映射器 -->
+<!-- 	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				
+				<bean
+					class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+			</list>
+		</property>
+	</bean> -->
+
+</beans>

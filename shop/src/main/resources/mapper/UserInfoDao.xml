@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.core.dao.UserInfoDao">
+	<resultMap id="usermap" type="UserInfo">
+		<id column="user_id" property="userId"/>
+		<result column="user_name" property="userName" />
+		<result column="user_sex" property="userSex" />
+		<result column="user_pw" property="userPw" />
+		<result column="user_phone" property="userPhone" />
+		<result column="user_type" property="userType" />
+		<result column="Time(user_time)" property="userTime" />
+		<result column="Date(user_time)" property="userDate" />
+	</resultMap>
+	
+	<insert id="add" parameterType="UserInfo">
+	insert 
+	into 
+	user_info(user_name,user_pw,user_sex,user_phone,user_type,user_time) 
+	values(#{userName},#{userPw},#{userSex},#{userPhone},#{userType},now())
+	</insert>
+	
+	<delete id="delete" parameterType="Integer">
+		delete 
+		from
+		user_info
+		where 
+		user_id = #{userId}
+	</delete>
+	<update id="update" parameterType="UserInfo">
+	 update 
+	 user_info 
+	 set 
+	 user_name = #{userName} ,
+	 user_pw = #{userPw},
+	 user_sex = #{userSex} ,
+	 user_phone = #{userPhone} ,
+	 user_type = #{userType}
+	 <where>
+	 		<if test="userId != null and userId != ''">
+						and user_id = #{userId}
+			</if>	 	 
+	 </where>	 
+	</update>
+	<select id="getUserInfo" parameterType="UserInfo" resultMap="usermap">
+		select 
+			user_id,
+			user_name,
+			user_sex,
+			user_pw,
+			user_phone,
+			user_type,
+			user_time ,
+			Time(user_time),
+			Date(user_time)		
+		from
+			user_info
+		<where>						
+						<if test="userType != null and userType != ''">
+						and user_type = #{userType}
+						</if>
+						<if test="userName != null and userName != ''">
+						 and user_name like #{userName}
+						</if>
+						<if test="userPhone != null and userPhone != ''">
+						 and user_phone = #{userPhone}
+						</if>
+						<if test="userDate != null and userDate != ''">
+						 and Date(user_time) = #{userDate}
+						</if>
+						<if test="userTime != null and userTime != ''">
+						 and Time(user_time) = #{userTime}
+						</if>					
+		</where>
+	</select>
+	
+	<select id="getAccount" parameterType="UserInfo" resultType="UserInfo">
+		  select user_id from user_info
+				<where>
+					user_name = #{userName} and user_pw = #{userPw}
+					or
+					user_phone = #{userPhone} and user_pw = #{userPw}
+				</where>
+				
+	</select>
+
+</mapper>

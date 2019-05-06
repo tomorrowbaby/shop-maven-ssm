@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.core.dao.OrderDao">	
+	<insert id="addOrderDetail" parameterType="OrderDetail">
+	insert into order_detail(
+		order_number,
+		order_price,
+		order_id)
+		values(
+		#{goodsNum},
+		#{goodsPrice},
+		#{orderId}
+		) 			
+	</insert>
+	
+	<insert id="addOrderManagement" parameterType="OrderManagement">
+			insert into order_management(
+			order_time,
+			order_total,
+			order_state,
+			user_id,
+			consignee_id
+			)
+			values(
+			now(),
+			#{orderTotal},
+			#{orderState},
+			#{userId},
+			#{consigneeId}
+			)
+			<selectKey resultType="Integer" order="AFTER" keyProperty="orderId">
+				select LAST_INSERT_ID()
+			</selectKey>	
+	</insert>	
+</mapper>

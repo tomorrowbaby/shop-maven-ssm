@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.core.dao.GoodsInfoDao">
+	
+<insert id="add" parameterType="GoodsInfo">
+		insert 
+		into 
+		goods_info (
+		goods_name,
+		goods_price,
+		goods_url,
+		goods_desc,
+		goods_state,
+		goods_time)
+		values(
+		#{goodsName},
+		#{goodsPrice},
+		#{goodsUrl},
+		#{goodsDesc},
+		#{goodsState},
+		now())			
+</insert>
+
+<select id="getList" parameterType="GoodsInfo" resultType="Map">
+			select 	
+					goods_id,						
+					goods_name,
+					goods_price,
+					goods_url,
+					goods_state,
+					goods_desc,
+					goods_time
+			from
+					goods_info
+			<where>
+							<if test=" goodsState != null and goodsState != ''">
+									and goods_state = #{goodsState}
+							</if>
+							<if test=" goodsName != null and goodsName != ''">
+									and goods_name like #{goodsName}
+							</if>
+							<if test=" goodsTime != null and goodsTime != ''">
+									and Date(goods_time) = #{goodsTime}
+							</if>
+							<if test=" goodsId != null and goodsId != ''">
+							    and goods_id = #{goodsId}
+							</if>
+			</where>
+</select>
+
+<update id="setState" parameterType="GoodsInfo">
+          update goods_info
+    				<set>
+    			    <if test=" goodsState != null and goodsState != ''">
+									 goods_state = #{goodsState}
+							</if>
+    				</set>
+					<where>
+			     	 	<if test=" goodsId != null and goodsId != ''">
+								 goods_id = #{goodsId}
+					  	</if>
+					</where>
+</update>
+
+<update id="update" parameterType="GoodsInfo">
+		update goods_info
+		<set>
+					
+					<if test=" goodsName != null and goodsName != ''">
+									 goods_name = #{goodsName},
+					</if>
+					<if test=" goodsPrice != null and goodsPrice != ''">
+									 goods_price = #{goodsPrice},
+					</if>
+					<if test=" goodsUrl != null and goodsUrl != ''">
+									 goods_url = #{goodsUrl},
+					</if>
+					<if test=" goodsDesc != null and goodsDesc != ''">
+									 goods_desc = #{goodsDesc}
+					</if>
+		</set>
+		<where>
+					  	<if test=" goodsId != null and goodsId != ''">
+								 goods_id = #{goodsId}
+					  	</if>
+		</where>
+</update>
+</mapper>
