@@ -41,6 +41,7 @@ public class OrderFrontController {
     */
    @RequestMapping("/toorder_check.shtml")
    public String toordercheck(HttpSession session) {
+	   if(session  != null)
 	   session.removeAttribute("Order");
 	   return "front/order_check" ;
    }

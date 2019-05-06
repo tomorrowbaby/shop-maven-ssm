@@ -55,7 +55,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							if(user != null){ 
 					%>
 					<li><a>欢迎您，${USER.userName}</a></li>
-					<li class="grid"><a href="${pageContext.request.contextPath }/tologin.shtml">我的订单</a></li>
+					<li class="grid"><a href="${pageContext.request.contextPath }/adminorder/tosingleorder_check.shtml">我的订单</a></li>
 					
 					<%}else{ %>
 								<li class="grid"><a href="${pageContext.request.contextPath }/tologin.shtml">登录</a></li>		
