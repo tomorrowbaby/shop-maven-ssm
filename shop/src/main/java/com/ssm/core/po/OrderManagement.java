@@ -5,14 +5,25 @@ package com.ssm.core.po;
  *
  */
 public class OrderManagement {
-	public Integer orderId ;
-	public String orderTime ;
-	public double orderTotal ;
-	public String orderState ;
+	private Integer orderId ;
+	private String orderTime ;
+	private String orderDate ;
+	private double orderTotal ;
+	private String orderState ;
 	
-	public Integer userId ;
-	public Integer orderDetailId ;
-	public Integer consigneeId ;
+	private Integer userId ;
+	private String userName ;
+	private Integer orderDetailId ;
+	private Integer consigneeId ;
+	private String consigneeName ;
+	
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
 	
 	public Integer getOrderDetailId() {
 		return orderDetailId;
@@ -56,5 +67,26 @@ public class OrderManagement {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
+	public String getOrderDate() {
+		return orderDate;
+	}
+	public void setOrderDate(String orderDate) {
+		this.orderDate = orderDate;
+	}
+	
+	public String getConsigneeName() {
+		return consigneeName;
+	}
+	public void setConsigneeName(String consigneeName) {
+		this.consigneeName = consigneeName;
+	}
+	@Override
+	public String toString() {
+		return "OrderManagement [orderId=" + orderId + ", orderTime=" + orderTime + ", orderDate=" + orderDate
+				+ ", orderTotal=" + orderTotal + ", orderState=" + orderState + ", userId=" + userId + ", userName="
+				+ userName + ", orderDetailId=" + orderDetailId + ", consigneeId=" + consigneeId + ", consigneeName="
+				+ consigneeName + "]";
+	}
+	
 	
 }

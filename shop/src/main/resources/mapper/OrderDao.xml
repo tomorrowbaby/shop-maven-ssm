@@ -3,15 +3,26 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssm.core.dao.OrderDao">	
+	<resultMap id="orderMap" type="OrderManagement">
+		<id column="order_id" property="orderId"/>
+		<result column="order_total" property="orderTotal"/>
+		<result column="user_name" property="userName" />
+		<result column="consignee_name" property="consigneeName" />
+		<result column="Time(order_time)" property="orderTime" />
+		<result column="Date(order_time)" property="orderDate" />
+	</resultMap>
+	
 	<insert id="addOrderDetail" parameterType="OrderDetail">
 	insert into order_detail(
 		order_number,
 		order_price,
-		order_id)
+		order_id,
+		goods_id)
 		values(
 		#{goodsNum},
 		#{goodsPrice},
-		#{orderId}
+		#{orderId},
+		#{goodsId}
 		) 			
 	</insert>
 	
@@ -34,4 +45,24 @@
 				select LAST_INSERT_ID()
 			</selectKey>	
 	</insert>	
+	
+	
+	<select id="getList" parameterType="OrderManagement" resultMap="orderMap">
+		select a.*,b.order_number,c.consignee_name,d.user_name
+		from order_management a
+		left join order_detail b 
+		on a.order_id = b.order_id 
+		left join consignee_management c 
+		on a.consignee_id = c.consignee_id 
+		left join user_info d 
+		on a.user_id = d.user_id	
+		<where>
+			 <if test="orderId != null and orderId != ''">
+			 a.order_id = #{orderId}
+			 </if>
+			 <if test="userId != null and userId != ''">
+			 a.user_id = #{userId}
+			 </if>
+		</where>
+	</select>
 </mapper>

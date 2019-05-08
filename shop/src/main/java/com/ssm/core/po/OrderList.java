@@ -12,7 +12,15 @@ public class OrderList {
 	private List<Double> priceList;
 	private List<Integer> goodsNumList ;
 	private List<Integer> order_id ;
+	private List<Integer> goodsIdList ;
 	
+	
+	public List<Integer> getGoodsIdList() {
+		return goodsIdList;
+	}
+	public void setGoodsIdList(List<Integer> goodsIdList) {
+		this.goodsIdList = goodsIdList;
+	}
 	public List<Integer> getOrder_id() {
 		return order_id;
 	}
@@ -34,7 +42,8 @@ public class OrderList {
 	
 	@Override
 	public String toString() {
-		return "OrderList [priceList=" + priceList + ", goodsNumList=" + goodsNumList + ", order_id=" + order_id + "]";
+		return "OrderList [priceList=" + priceList + ", goodsNumList=" + goodsNumList + ", order_id=" + order_id
+				+ ", goodsIdList=" + goodsIdList + "]";
 	}
 	
 	

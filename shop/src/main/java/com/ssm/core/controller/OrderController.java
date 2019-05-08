@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ import com.ssm.core.service.OrderService;
  */
 @Controller
 @RequestMapping("/adminorder")
-public class OrderFrontController {
+public class OrderController {
 	 
    @Autowired
    private GoodsService goodsService ;
@@ -40,21 +41,35 @@ public class OrderFrontController {
     * @return
     */
    @RequestMapping("/toorder_check.shtml")
-   public String toordercheck(HttpSession session) {
+   public String toOrderCheck(HttpSession session) {
 	   if(session  != null)
 	   session.removeAttribute("Order");
 	   return "front/order_check" ;
    }
    
    /**
-    * 跳转到order_check页面,并清空单件订单的session
-    * @return
+    * 跳转到订单提交
     */
    @RequestMapping("/tosingleorder_check.shtml")
    public String toosinglerdercheck() {
 	   return "front/order_check" ;
    }
    
+   
+   /**
+    * 订单管理页面
+    * @return
+    */
+   @RequestMapping("/toorder_management")
+   public String toOrderManagement() {
+	   return "front/order_manager" ;
+   }
+   
+   
+   /**
+    * 操作成功页面
+    * @return
+    */
    @RequestMapping("/tosuccess.shtml")
    public String toSuccess() {
 	   return "success" ;
@@ -141,6 +156,7 @@ public class OrderFrontController {
 		UserInfo user = (UserInfo)session.getAttribute("USER") ;
 		OrderManagement orderManagement = new OrderManagement() ;
 		orderManagement.setUserId(user.getUserId());
+		System.out.println(orderDetail.getGoodsId());
 		try{
 			orderService.addOrder(orderDetail, orderManagement) ;
 		}catch(Exception e) {
@@ -166,4 +182,20 @@ public class OrderFrontController {
 		}
 		return "success" ;
 	}
+	
+	 /**
+     * 查询订单
+     * @param om
+     * @param session
+     * @param model
+     * @return
+     */	 
+	@RequestMapping("/toordermanager_index")
+    public String getOrder(OrderManagement order,Model model,HttpSession session){
+		UserInfo user = (UserInfo)session.getAttribute("USER") ;
+		order.setUserId(user.getUserId());
+        List<OrderManagement> orderList = orderService.getList(order) ;
+        model.addAttribute("list", orderList) ;
+        return "front/ordermanager_index" ;
+    }
 }

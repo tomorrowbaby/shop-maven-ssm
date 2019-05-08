@@ -1,5 +1,7 @@
 package com.ssm.core.dao;
 
+import java.util.List;
+
 import com.ssm.core.po.OrderDetail;
 import com.ssm.core.po.OrderManagement;
 
@@ -24,5 +26,10 @@ public interface OrderDao {
 	 */
 	public int addOrderManagement(OrderManagement orderManagement) ;
 	
-	//public List<OrderList> getOrder
+	/**
+	 * 描述：订单列表查询
+	 * @param orderManagement
+	 * @return
+	 */
+	public List<OrderManagement> getList(OrderManagement orderManagement) ;
 }

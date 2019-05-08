@@ -1,5 +1,7 @@
 package com.ssm.core.service;
 
+import java.util.List;
+
 import com.ssm.core.po.OrderDetail;
 import com.ssm.core.po.OrderList;
 import com.ssm.core.po.OrderManagement;
@@ -26,4 +28,11 @@ public interface OrderService {
 	 * @return
 	 */
 	public int addOrderList(OrderList orderList, OrderManagement orderManagement) ;
+	
+	/**
+	 * 描述订单列表获取
+	 * @param orderManagement
+	 * @return
+	 */
+	public List<OrderManagement> getList(OrderManagement orderManagement) ;
 }

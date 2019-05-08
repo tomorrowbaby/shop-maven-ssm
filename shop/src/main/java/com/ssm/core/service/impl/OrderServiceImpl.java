@@ -46,6 +46,7 @@ public class OrderServiceImpl implements OrderService{
 		if (orderList != null) {
 			List<Double> priceList = orderList.getPriceList() ;
 			List<Integer> goodsNumList = orderList.getGoodsNumList() ;
+			List<Integer> goodsIdList = orderList.getGoodsIdList() ;
 			double money = 0 ;
 			for(int i = 0 ; i < priceList.size() ; i++) {
 				double price = priceList.get(i) ;
@@ -60,11 +61,16 @@ public class OrderServiceImpl implements OrderService{
 				orderDetail.setOrderId(orderManagement.getOrderId());
 				orderDetail.setOrderPrice(priceList.get(i));
 				orderDetail.setOrderNumber(goodsNumList.get(i));
+				orderDetail.setGoodsId(goodsIdList.get(i));
 				orderDao.addOrderDetail(orderDetail);
 			}
 			return 1 ;
 		}else {
 			return 0 ;
 		}
+	}
+	
+	public List<OrderManagement> getList(OrderManagement orderManagement) {			
+		return orderDao.getList(orderManagement) ;
 	}
 }

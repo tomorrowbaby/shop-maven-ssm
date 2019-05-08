@@ -54,4 +54,14 @@ public class OrderTest {
 		order.setUserId(2);
 		orderService.addOrderList(orderList, order) ;
 	}
+	
+	@Test
+	public void getListTest() {
+		OrderManagement om = new OrderManagement() ;
+		om.setOrderId(8);
+		List<OrderManagement> orderList = orderService.getList(om) ;
+		for(OrderManagement order : orderList) {
+			System.out.println(order);
+		}
+	}
 }

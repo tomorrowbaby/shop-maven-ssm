@@ -109,6 +109,7 @@ var price = new Array(1000) ;
 var orderMoney = 0;
 var goodsNum = 0 ;
 var goodsPrice = 0;
+var goodsId = 0 ;
 
 
 /*
@@ -141,6 +142,7 @@ $(function(){
 	      				orderMoney = data.goodsPrice ;
 	      				goodsNum = 1 ; 
 	      				goodsPrice = data.goodsPrice ;
+	      				goodsId = data.goodsId ;
 	});
 });
 setTimeout('test()',2000);
@@ -171,6 +173,7 @@ function money(){
 var goods ;
 var priceList = new Array() ;
 var goodsNumList = new Array() ;
+var goodsIdList = new Array() ;
 
 function showCart(){
 	$.post("${pageContext.request.contextPath }/adminorder/orderlist.shtml",
@@ -185,6 +188,7 @@ function showCart(){
 								goodsPrice[i] = data[i].goods_price ;
 								priceList[i] = data[i].goods_price ;
 								goodsNumList[i] = 1 ;
+								goodsIdList[i] = data[i].goods_id ;
 						     var str = 
 						    	 '<div class="product_info clearfix">'+
 							      '<a href="#" class="img_link"><img src="http://127.0.0.1:9999/shopimg/upload/'+data[i].goods_url+'" /></a>'+
@@ -241,7 +245,7 @@ function order_save(){
 			$.ajax({
 					type : "POST",
 					url:"${pageContext.request.contextPath }/adminorder/orderlistsave.shtml",
-					data : JSON.stringify({priceList:priceList,goodsNumList:goodsNumList}) ,
+					data : JSON.stringify({priceList:priceList,goodsNumList:goodsNumList,goodsIdList:goodsIdList}) ,
 					contentType : "application/json;charset=UTF-8"
 			});
 			

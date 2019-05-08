@@ -32,7 +32,7 @@
 		<mvc:resources location="/back/" mapping="/back/**" />
 		<mvc:resources location="/front/" mapping="/front/**" />
 		<mvc:resources location="/bootStrapPager/" mapping="/bootStrapPager/**" />
-
+		<mvc:resources location="/res/" mapping="/res/**" />
 	<!-- <mvc:default-servlet-handler /> -->
 
 	<!-- 配置视图解析器 -->
