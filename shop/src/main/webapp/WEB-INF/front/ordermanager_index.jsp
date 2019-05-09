@@ -26,7 +26,7 @@
 		<div class="row">
 			<div class="col-sm-3 menu">
 				<ul class="nav nav-pills nav-stacked">
-					<li role="presentation"><a href="javascript:void(0)" onclick="load('adminorder/queryOrder.shtml')"><font size="+3">订单信息</font></a></li>
+					<li role="presentation"><a href="${pageContext.request.contextPath }/adminorder/toordermanager_index.shtml" ><font size="+3">订单信息</font></a></li>
 					<li role="presentation"><a href="javascript:void(0)" onclick="load('adminconsignee/list.shtml')"><font size="+3">收货人</font></a></li>
 					<li role="presentation"><a href="adminorder/exit.shtml" ><font size="+2">退出</font></a></li>
 				</ul>
@@ -51,7 +51,8 @@
 			<td class="success">${order.userName }</td>
 			<td class="success">${order.consigneeName }</td>
 			<td class="success">${order.orderTotal }</td>
-			<td><button type="button" class="btn btn-info">详情</button></td>
+			<td><a class="btn btn-info" href="${pageContext.request.contextPath }/adminorder/toordermanager_info.shtml?orderId=${order.orderId}" >详情</a></td>
+
 		</tr>
 		</c:forEach>		
 	</table>

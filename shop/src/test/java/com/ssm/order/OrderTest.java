@@ -64,4 +64,13 @@ public class OrderTest {
 			System.out.println(order);
 		}
 	}
+	
+	@Test
+	public void getDetailTest() {
+		Integer orderId = 30 ;
+		List<OrderDetail> orderDetail = orderService.getOrderDetail(orderId);
+		for(OrderDetail order : orderDetail) {
+			System.out.println(order);
+		}
+	}
 }

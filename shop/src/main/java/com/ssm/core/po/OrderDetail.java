@@ -18,9 +18,16 @@ public class OrderDetail {
   private Integer goodsNum ;
   private String goodsName ;
   private String goodsUrl ;
+  private String consigneeAddress ;
     
   
     
+	public String getConsigneeAddress() {
+	return consigneeAddress;
+}
+public void setConsigneeAddress(String consigneeAddress) {
+	this.consigneeAddress = consigneeAddress;
+}
 	public Integer getOrderId() {
 	return orderId;
 }
@@ -78,9 +85,9 @@ public void setOrderId(Integer orderId) {
 	@Override
 	public String toString() {
 		return "OrderDetail [orderDetailId=" + orderDetailId + ", orderNumber=" + orderNumber + ", orderPrice="
-				+ orderPrice + ", getOrderDetailId()=" + getOrderDetailId() + ", getOrderNumber()=" + getOrderNumber()
-				+ ", getOrderPrice()=" + getOrderPrice() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
+				+ orderPrice + ", orderId=" + orderId + ", goodsId=" + goodsId + ", goodsPrice=" + goodsPrice
+				+ ", goodsNum=" + goodsNum + ", goodsName=" + goodsName + ", goodsUrl=" + goodsUrl
+				+ ", consigneeAddress=" + consigneeAddress + "]";
 	}
      
 }

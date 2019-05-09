@@ -30,9 +30,16 @@ public interface OrderService {
 	public int addOrderList(OrderList orderList, OrderManagement orderManagement) ;
 	
 	/**
-	 * 描述订单列表获取
+	 * 描述:订单列表获取
 	 * @param orderManagement
 	 * @return
 	 */
 	public List<OrderManagement> getList(OrderManagement orderManagement) ;
+	
+	/**
+	 * 描述：订单详情
+	 * @param orderId
+	 * @return
+	 */
+	public List<OrderDetail> getOrderDetail(Integer orderId) ;
 }

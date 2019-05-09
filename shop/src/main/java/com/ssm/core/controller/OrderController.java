@@ -175,6 +175,7 @@ public class OrderController {
 		UserInfo user = (UserInfo)session.getAttribute("USER") ;
 		orderManagement.setConsigneeId(1);
 		orderManagement.setUserId(user.getUserId());
+		System.out.println(orderList.getGoodsNumList().get(0));
 		try {
 			orderService.addOrderList(orderList, orderManagement) ;
 		}catch(Exception e) {
@@ -198,4 +199,11 @@ public class OrderController {
         model.addAttribute("list", orderList) ;
         return "front/ordermanager_index" ;
     }
+	
+	@RequestMapping("/toordermanager_info")
+	public String getOrderDetail(Integer orderId,Model model) {
+		List<OrderDetail> orderDetail = orderService.getOrderDetail(orderId) ;
+		model.addAttribute("list", orderDetail) ;
+		return "front/ordermanager_info" ;
+	}
 }

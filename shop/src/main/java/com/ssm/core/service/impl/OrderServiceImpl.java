@@ -24,6 +24,7 @@ public class OrderServiceImpl implements OrderService{
 	@Autowired
 	private OrderDao orderDao ;
 	
+
 	public int addOrder(OrderDetail orderDetail,OrderManagement orderManagement) {
 		int i = 0 ;		
 		double num =(double) orderDetail.getGoodsNum() ;
@@ -72,5 +73,13 @@ public class OrderServiceImpl implements OrderService{
 	
 	public List<OrderManagement> getList(OrderManagement orderManagement) {			
 		return orderDao.getList(orderManagement) ;
+	}
+	
+	public List<OrderDetail> getOrderDetail(Integer orderId){
+		List<OrderDetail> orderDetail = null ;
+		if (orderId != null) {
+			orderDetail = orderDao.getOrderDetail(orderId) ;
+		}
+		return orderDetail ;
 	}
 }

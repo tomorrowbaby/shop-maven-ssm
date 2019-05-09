@@ -2,6 +2,8 @@ package com.ssm.core.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.ssm.core.po.OrderDetail;
 import com.ssm.core.po.OrderManagement;
 
@@ -32,4 +34,11 @@ public interface OrderDao {
 	 * @return
 	 */
 	public List<OrderManagement> getList(OrderManagement orderManagement) ;
+	
+	/**
+	 *  描述：订单详情查询
+	 * @param orderId
+	 * @return
+	 */
+	public List<OrderDetail> getOrderDetail(Integer orderId) ;
 }

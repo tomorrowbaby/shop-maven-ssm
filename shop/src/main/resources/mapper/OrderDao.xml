@@ -12,6 +12,15 @@
 		<result column="Date(order_time)" property="orderDate" />
 	</resultMap>
 	
+	<resultMap id="orderDetailMap" type="OrderDetail">
+		<id column="order_id" property="orderId"/>
+		<result column="order_number" property="orderNumber"/>
+		<result column="goods_name" property="goodsName" />
+		<result column="consignee_address" property="consigneeAddress" />
+		<result column="Time(order_time)" property="orderTime" />
+		<result column="Date(order_time)" property="orderDate" />
+	</resultMap>
+	
 	<insert id="addOrderDetail" parameterType="OrderDetail">
 	insert into order_detail(
 		order_number,
@@ -19,11 +28,11 @@
 		order_id,
 		goods_id)
 		values(
-		#{goodsNum},
-		#{goodsPrice},
+		#{orderNumber},
+		#{orderPrice},
 		#{orderId},
 		#{goodsId}
-		) 			
+		) 		
 	</insert>
 	
 	<insert id="addOrderManagement" parameterType="OrderManagement">
@@ -48,7 +57,7 @@
 	
 	
 	<select id="getList" parameterType="OrderManagement" resultMap="orderMap">
-		select a.*,b.order_number,c.consignee_name,d.user_name
+		select distinct a.*,b.order_number,c.consignee_name,d.user_name
 		from order_management a
 		left join order_detail b 
 		on a.order_id = b.order_id 
@@ -58,11 +67,27 @@
 		on a.user_id = d.user_id	
 		<where>
 			 <if test="orderId != null and orderId != ''">
-			 a.order_id = #{orderId}
+				 a.order_id = #{orderId}
 			 </if>
 			 <if test="userId != null and userId != ''">
-			 a.user_id = #{userId}
+			 	 a.user_id = #{userId}
 			 </if>
+			 <if test="orderDate != null and orderDate != ''">
+			 	 Date(a.order_time) = #{orderDate}
+			 </if>
+		</where>
+		order by a.order_id desc
+	</select>
+	
+	<select id="getOrderDetail" parameterType="Integer" resultMap="orderDetailMap">
+	select b.order_id,b.order_number,c.goods_name,c.goods_url,
+		c.goods_price,consignee_address
+		from order_detail b 
+		left join goods_info c on b.goods_id = c.goods_id
+        left join order_management a on a.order_id = b.order_id
+		right join consignee_management d on d.consignee_id = a.consignee_id
+		<where>
+			b.order_id = #{orderId}
 		</where>
 	</select>
 </mapper>
