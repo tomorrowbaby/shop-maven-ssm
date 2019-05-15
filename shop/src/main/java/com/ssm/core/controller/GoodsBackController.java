@@ -23,7 +23,7 @@ import com.ssm.core.service.impl.GoodsServiceImpl;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 @Controller
-public class GoodsController {
+public class GoodsBackController {
 		@Autowired
 		GoodsService goodsService  ;
 		
@@ -108,7 +108,7 @@ public class GoodsController {
 			e.printStackTrace();	
 			model.addAttribute("info", "添加失败") ;
 		}
-		return "result" ;
+		return "back/success" ;
 	}
 	
 	/**
@@ -168,15 +168,17 @@ public class GoodsController {
 	 * @return
 	 */
 	@RequestMapping(value = "/goods/update.action" ,method = RequestMethod.GET)
-	public String updateGoodsInfo(GoodsInfo goods) {
+	public String updateGoodsInfo(GoodsInfo goods,Model model) {
 		goods.setGoodsUrl(Common.GOODS_URL);
 		System.out.println(goods);
 		try {
 			goodsService.update(goods) ;
-			return "result" ;
+			model.addAttribute("info", "操作成功") ;
+			return "back/success" ;
 		}catch(Exception e) {
 			e.printStackTrace();
+			model.addAttribute("info", "失败") ;
 		}
-		  return "result" ;	
+		  return "back/success" ;	
 	 }
 }

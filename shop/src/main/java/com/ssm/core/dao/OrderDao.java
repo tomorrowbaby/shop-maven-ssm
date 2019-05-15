@@ -36,9 +36,24 @@ public interface OrderDao {
 	public List<OrderManagement> getList(OrderManagement orderManagement) ;
 	
 	/**
-	 *  描述：订单详情查询
+	 * 描述：订单详情查询
 	 * @param orderId
 	 * @return
 	 */
 	public List<OrderDetail> getOrderDetail(Integer orderId) ;
+	
+	/**
+	 * 描述：删除订单
+	 * @param orderId
+	 * @return
+	 */
+	public int delete(Integer orderId) ;
+	
+	/**
+	 * 描述 ： 更换收货人
+	 * @param orderId
+	 * @param  consigneeId
+	 * @return
+	 */
+	public int update(@Param("consigneeId") Integer consigneeId ,@Param("orderId") Integer orderId) ; 
 }

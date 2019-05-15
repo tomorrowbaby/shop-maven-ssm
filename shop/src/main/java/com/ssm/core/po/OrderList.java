@@ -13,8 +13,15 @@ public class OrderList {
 	private List<Integer> goodsNumList ;
 	private List<Integer> order_id ;
 	private List<Integer> goodsIdList ;
+	private Integer consigneeId ;
 	
 	
+	public Integer getConsigneeId() {
+		return consigneeId;
+	}
+	public void setConsigneeId(Integer consigneeId) {
+		this.consigneeId = consigneeId;
+	}
 	public List<Integer> getGoodsIdList() {
 		return goodsIdList;
 	}

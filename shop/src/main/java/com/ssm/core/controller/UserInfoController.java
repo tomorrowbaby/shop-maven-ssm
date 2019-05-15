@@ -130,8 +130,8 @@ public class UserInfoController {
 			}catch(Exception e) {
 				e.printStackTrace();			
 			}
-			model.addAttribute("result", result) ;
-			return "success";
+			model.addAttribute("info", result) ;
+			return "back/success";
 		}
 		/**
 		 * 判断手机号码重复

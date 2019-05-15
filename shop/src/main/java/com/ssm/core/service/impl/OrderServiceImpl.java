@@ -24,7 +24,12 @@ public class OrderServiceImpl implements OrderService{
 	@Autowired
 	private OrderDao orderDao ;
 	
-
+	/**
+	 * 描述：单个订单的增加
+	 * @param orderDetail
+	 * @param orderManagement
+	 * @return
+	 */
 	public int addOrder(OrderDetail orderDetail,OrderManagement orderManagement) {
 		int i = 0 ;		
 		double num =(double) orderDetail.getGoodsNum() ;
@@ -43,6 +48,12 @@ public class OrderServiceImpl implements OrderService{
 		return i ;
 	}
 	
+	/**
+	 * 描述 多个订单增加
+	 * @param orderList
+	 * @param orderManagement
+	 * @return
+	 */
 	public int addOrderList(OrderList orderList,OrderManagement orderManagement) {
 		if (orderList != null) {
 			List<Double> priceList = orderList.getPriceList() ;
@@ -71,15 +82,44 @@ public class OrderServiceImpl implements OrderService{
 		}
 	}
 	
+	/**
+	 * 描述:订单列表获取
+	 * @param orderManagement
+	 * @return
+	 */
 	public List<OrderManagement> getList(OrderManagement orderManagement) {			
 		return orderDao.getList(orderManagement) ;
 	}
 	
+	/**
+	 * 描述：订单详情
+	 * @param orderId
+	 * @return
+	 */
 	public List<OrderDetail> getOrderDetail(Integer orderId){
 		List<OrderDetail> orderDetail = null ;
 		if (orderId != null) {
 			orderDetail = orderDao.getOrderDetail(orderId) ;
 		}
 		return orderDetail ;
+	}
+	
+	/**
+	 * 描述：删除订单
+	 * @param orderId
+	 * @return
+	 */
+	public Integer delete(Integer orderId) {	
+		return orderDao.delete(orderId) ;
+	}
+	
+	/**
+	 * 描述：更换订单收货人
+	 * @param consigneeId
+	 * @param orderId
+	 * @return
+	 */
+	public Integer update(Integer consigneeId, Integer orderId) {
+		return orderDao.update(consigneeId,orderId);
 	}
 }

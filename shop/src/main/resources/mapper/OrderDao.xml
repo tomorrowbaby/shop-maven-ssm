@@ -90,4 +90,21 @@
 			b.order_id = #{orderId}
 		</where>
 	</select>
+	
+	<delete id="delete" parameterType="Integer">
+		delete a,b from order_detail a join order_management b 
+		on a.order_id = b.order_id  
+		<where>
+		 	a.order_id = #{orderId} ;  
+		</where>	
+	</delete>
+	
+	<update id="update" parameterType="Integer">
+		update order_management
+		 set 
+			consignee_id = #{consigneeId}	
+		<where>
+			order_id = #{orderId}
+		</where>		
+	</update>
 </mapper>

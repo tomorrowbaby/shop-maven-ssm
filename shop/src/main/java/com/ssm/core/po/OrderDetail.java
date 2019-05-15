@@ -19,9 +19,15 @@ public class OrderDetail {
   private String goodsName ;
   private String goodsUrl ;
   private String consigneeAddress ;
-    
+  private Integer consigneeId ;
   
     
+	public Integer getConsigneeId() {
+	return consigneeId;
+}
+public void setConsigneeId(Integer consigneeId) {
+	this.consigneeId = consigneeId;
+}
 	public String getConsigneeAddress() {
 	return consigneeAddress;
 }

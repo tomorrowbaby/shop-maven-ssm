@@ -2,9 +2,56 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ssm.core.dao.ConsogneeManagementDao">
-	<select id="getConsigneeManagement" parameterType="ConsigneeManagement" resultType="Map">
-		select * from ConsigneeManagement
+<mapper namespace="com.ssm.core.dao.ConsigneeManagementDao">
+	<resultMap type="ConsigneeManagement" id="consigneeMap">
+		<id column="consignee_id" property="consigneeId"/>
+		<result column="consignee_name" property="consigneeName"/>
+		<result column="consignee_address" property="consigneeAddress"/>
+		<result column="consignee_code" property="consigneeCode"/>
+		<result column="consignee_phone" property="consigneePhone"/>
+	</resultMap>
+
+	<select id="get" parameterType="ConsigneeManagement" resultMap="consigneeMap">
+		select a.consignee_id,a.consignee_name,consignee_code,
+				a.consignee_phone,a.consignee_address
+		from consignee_management a
+		<where>
+			a.user_id = #{userId}
+		</where>
 		
 	</select>
+	
+	<insert id="add" parameterType="ConsigneeManagement" >
+		insert into consignee_management(
+		consignee_name,
+		consignee_address,
+		consignee_code,
+		consignee_phone,
+		user_id)
+		values(
+		#{consigneeName},
+		#{consigneeAddress},
+		#{consigneeCode},
+		#{consigneePhone},
+		#{userId})
+		
+	</insert>
+	
+	<update id="update" parameterType="ConsigneeManagement">
+	 update consignee_management set
+	 consignee_name = #{consigneeName},
+	 consignee_address = #{consigneeAddress},
+	 consignee_code = #{consigneeCode},
+	 consignee_phone = #{consigneePhone}
+	 <where>
+	 	consignee_id = #{consigneeId}
+	 </where>
+	</update>
+	
+	<delete id="delete" parameterType="Integer">
+		delete from consignee_management
+		<where>
+			consignee_id = #{consigneeId}
+		</where>
+	</delete>
 </mapper>

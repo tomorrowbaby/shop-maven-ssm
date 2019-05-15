@@ -47,6 +47,12 @@ public class ConsigneeManagement {
 	public void setConsigneePhone(String consigneePhone) {
 		this.consigneePhone = consigneePhone;
 	}
+	@Override
+	public String toString() {
+		return "ConsigneeManagement [consigneeId=" + consigneeId + ", userId=" + userId + ", consigneeName="
+				+ consigneeName + ", consigneeAddress=" + consigneeAddress + ", consigneeCode=" + consigneeCode
+				+ ", consigneePhone=" + consigneePhone + "]";
+	}
 	
 	
 	

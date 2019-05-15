@@ -28,8 +28,9 @@ import com.ssm.core.service.OrderService;
  */
 @Controller
 @RequestMapping("/adminorder")
-public class OrderController {
+public class OrderFrontController {
 	 
+	public static String RESULT="操作失败" ;
    @Autowired
    private GoodsService goodsService ;
    
@@ -71,8 +72,9 @@ public class OrderController {
     * @return
     */
    @RequestMapping("/tosuccess.shtml")
-   public String toSuccess() {
-	   return "success" ;
+   public String toSuccess(Model model) {
+	   model.addAttribute("info", RESULT) ;
+	   return "front/success" ;
    }
    
 	/**
@@ -93,6 +95,7 @@ public class OrderController {
 	 		order.setGoodsName(goodsName);
 	 		order.setGoodsPrice(goodsPrice);
 	 		order.setGoodsUrl(goodsUrl);
+	 		order.setGoodsId(goodsId);
 	 		session.setAttribute("Order",order);
 	 }
 	 
@@ -152,17 +155,18 @@ public class OrderController {
 	 * @return
 	 */
 	@RequestMapping(value = "/single_order_submit.shtml",method = RequestMethod.POST)
-	public String singleOrderSave(OrderDetail orderDetail,HttpSession session) {
+	public void singleOrderSave(OrderDetail orderDetail,HttpSession session) {
 		UserInfo user = (UserInfo)session.getAttribute("USER") ;
 		OrderManagement orderManagement = new OrderManagement() ;
+		orderDetail.setOrderNumber(orderDetail.getGoodsNum());
 		orderManagement.setUserId(user.getUserId());
-		System.out.println(orderDetail.getGoodsId());
+		orderManagement.setConsigneeId(orderDetail.getConsigneeId());
 		try{
 			orderService.addOrder(orderDetail, orderManagement) ;
+			RESULT = "操作成功" ;
 		}catch(Exception e) {
 			e.printStackTrace();
 		}		
-		return "success" ;
 	}
 	
 	/**
@@ -173,19 +177,18 @@ public class OrderController {
 	public String orderListSave(@RequestBody OrderList orderList,HttpSession session) {
 		OrderManagement orderManagement = new OrderManagement() ;
 		UserInfo user = (UserInfo)session.getAttribute("USER") ;
-		orderManagement.setConsigneeId(1);
 		orderManagement.setUserId(user.getUserId());
-		System.out.println(orderList.getGoodsNumList().get(0));
+		orderManagement.setConsigneeId(orderList.getConsigneeId());
 		try {
 			orderService.addOrderList(orderList, orderManagement) ;
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return "success" ;
+		return "front/success" ;
 	}
 	
 	 /**
-     * 查询订单
+     * 描述：查询订单
      * @param om
      * @param session
      * @param model
@@ -200,6 +203,12 @@ public class OrderController {
         return "front/ordermanager_index" ;
     }
 	
+	/**
+	 * 描述：查询订单详情
+	 * @param orderId
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/toordermanager_info")
 	public String getOrderDetail(Integer orderId,Model model) {
 		List<OrderDetail> orderDetail = orderService.getOrderDetail(orderId) ;

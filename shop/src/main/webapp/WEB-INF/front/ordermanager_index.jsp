@@ -27,8 +27,8 @@
 			<div class="col-sm-3 menu">
 				<ul class="nav nav-pills nav-stacked">
 					<li role="presentation"><a href="${pageContext.request.contextPath }/adminorder/toordermanager_index.shtml" ><font size="+3">订单信息</font></a></li>
-					<li role="presentation"><a href="javascript:void(0)" onclick="load('adminconsignee/list.shtml')"><font size="+3">收货人</font></a></li>
-					<li role="presentation"><a href="adminorder/exit.shtml" ><font size="+2">退出</font></a></li>
+					<li role="presentation"><a href="${pageContext.request.contextPath }/adminconsignee/consigneelist.shtml" ><font size="+3">收货人</font></a></li>
+					<li role="presentation"><a href="${pageContext.request.contextPath }/toindex.shtml" ><font size="+2">退出</font></a></li>
 				</ul>
 			
 		</div>

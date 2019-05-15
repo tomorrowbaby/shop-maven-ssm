@@ -42,4 +42,19 @@ public interface OrderService {
 	 * @return
 	 */
 	public List<OrderDetail> getOrderDetail(Integer orderId) ;
+	
+	/**
+	 * 描述：删除订单
+	 * @param orderId
+	 * @return
+	 */
+	public Integer delete(Integer orderId);
+	
+	/**
+	 * 描述：更改订单收货人
+	 * @param consigneeId
+	 * @param orderId
+	 * @return
+	 */
+	public Integer update(Integer consigneeId , Integer orderId) ;
 }
