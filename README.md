@@ -6,7 +6,7 @@
 
 ### 项目架构 ： 
 
-![]()
+![](https://github.com/tomorrowbaby/image/blob/master/Screenshot%20from%202019-05-22%2009-13-19.png)
 
 
 
@@ -99,9 +99,3 @@ CREATE TABLE `user_info` (
 
 在WebContent下建立一个upload的文件夹
 
-
-
-=======
-# shop-maven-ssm
-辣条商城，一共５个模块：用户管理，商品管理，订单管理，地址管理。都是简单的SSM框架的使用，适合练手。
->>>>>>> a71efc8e97a2a2db3208ed878072aa8faab9077d
