@@ -6,37 +6,31 @@
 
 ### 项目架构 ： 
 
-![](/home/wangyu/Pictures/Screenshot from 2019-05-22 09-13-19.png)
+![]()
 
 
 
 ### 项目前台部分页面展示：
 
-##### 订单页面
-
-![Screenshot from 2019-05-21 22-25-19](/home/wangyu/Pictures/Screenshot from 2019-05-21 22-25-19.png)
-
-![Screenshot from 2019-05-21 22-20-27](/home/wangyu/Pictures/Screenshot from 2019-05-21 22-20-27.png)
 
 ##### 商品详情页面
 
-![Screenshot from 2019-05-21 22-20-10](/home/wangyu/Pictures/Screenshot from 2019-05-21 22-20-10.png)
+![Screenshot from 2019-05-21 22-20-10](https://github.com/tomorrowbaby/image/blob/master/Screenshot%20from%202019-05-21%2022-20-10.png)
 
 ##### 商城主页
 
-![Screenshot from 2019-05-21 22-19-46](/home/wangyu/Pictures/Screenshot from 2019-05-21 22-19-46.png)
+![Screenshot from 2019-05-21 22-19-46](https://github.com/tomorrowbaby/image/blob/master/Screenshot%20from%202019-05-21%2022-19-46.png)
 
 ### 商品展示页面
 
-![Screenshot from 2019-05-21 22-19-27](/home/wangyu/Pictures/Screenshot from 2019-05-21 22-19-27.png)
+![Screenshot from 2019-05-21 22-19-27](https://github.com/tomorrowbaby/image/blob/master/Screenshot%20from%202019-05-21%2022-19-27.png)
 
 ### 商品后台部分页面
 
-![](/home/wangyu/Pictures/Screenshot from 2019-05-22 09-35-28.png)
 
-![Screenshot from 2019-05-22 09-35-12](/home/wangyu/Pictures/Screenshot from 2019-05-22 09-35-12.png)
+![Screenshot from 2019-05-22 09-35-12](https://github.com/tomorrowbaby/image/blob/master/Screenshot%20from%202019-05-22%2009-35-12.png)
 
-![Screenshot from 2019-05-22 09-34-50](/home/wangyu/Pictures/Screenshot from 2019-05-22 09-34-50.png)
+![Screenshot from 2019-05-22 09-34-50](https://github.com/tomorrowbaby/image/blob/master/Screenshot%20from%202019-05-22%2009-35-28.png)
 
 
 
