@@ -2,7 +2,7 @@
 
 ### 用到的技术：
 
-​					![](image/blob/master/Screenshot%20from%202019-05-22%2008-44-44.png)
+​					![](https://github.com/tomorrowbaby/image/blob/master/Screenshot%20from%202019-05-22%2008-44-44.png)
 
 ### 项目架构 ： 
 
