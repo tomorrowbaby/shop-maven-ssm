@@ -1,9 +1,8 @@
-<<<<<<< HEAD
 # 辣条商城 
 
 ### 用到的技术：
 
-​					![](/home/wangyu/Pictures/Screenshot from 2019-05-22 08-44-44.png)
+​					![](image/blob/master/Screenshot%20from%202019-05-22%2008-44-44.png)
 
 ### 项目架构 ： 
 
