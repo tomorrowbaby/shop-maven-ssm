@@ -2,7 +2,9 @@
 
 ### 用到的技术：
 
-​					![](https://github.com/tomorrowbaby/image/blob/master/Screenshot%20from%202019-05-22%2008-44-44.png)
+ 前端：Jquery bootstrap  
+ 后端： springmvc spring mybatis
+ 优化技术：  页面缓存OScache
 
 ### 项目架构 ： 
 
