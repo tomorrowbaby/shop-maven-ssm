@@ -4,7 +4,7 @@
 
  前端：Jquery bootstrap  
  后端： springmvc spring mybatis
- 优化技术：  页面缓存OScache
+ 优化技术： 页面缓存OScache
 
 ### 项目架构 ： 
 
