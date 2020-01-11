@@ -65,7 +65,7 @@ CREATE TABLE `order_detail` (
   `order_number` int(11) DEFAULT NULL,
   `order_price` double DEFAULT NULL,
   `order_id` int(11) DEFAULT NULL,
-  `goods_id` int(11) DEFAULT NULL,
+  `goods_id` int(11) DEFAULT NUL
   PRIMARY KEY (`order_detail_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8;
 
@@ -100,5 +100,6 @@ CREATE TABLE `user_info` (
 
 修改端口号为 ： 9999
 
-在WebContent下建立一个upload的文件夹
-
+### 作者联系方式
+QQ 微信 958689695
+个人博客 mmnnaa.com
